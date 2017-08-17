@@ -71,7 +71,7 @@ import { HeroService } from './hero.service';
 export class AppComponent implements OnInit{
 
     title = 'Tour of Heroes';
-    heroes = {};
+    heroes = [];
     selectedHero: Hero;
 
     constructor(private heroService: HeroService) {
@@ -83,7 +83,7 @@ export class AppComponent implements OnInit{
     }
     
     getHeroes(): void {
-        this.heroes = this.heroService.getHeroes();
+        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
     }
     
     ngOnInit(): void {
